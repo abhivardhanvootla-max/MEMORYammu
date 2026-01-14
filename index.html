@@ -1,42 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Image Load Test</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Memorable Day With Ammulu ❤️</title>
+
+<style>
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== BACKGROUND ===== */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    background-size: 400% 400%;
+    animation: bgMove 12s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===== PASSWORD SCREEN ===== */
+#lockScreen {
+    text-align: center;
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255,105,180,0.4);
+}
+
+#lockScreen h1 {
+    margin-bottom: 20px;
+    color: #ff9ad5;
+}
+
+#lockScreen input {
+    padding: 12px;
+    width: 220px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#lockScreen button {
+    padding: 10px 30px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(45deg, #ff4ecd, #ff8fd8);
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#error {
+    margin-top: 10px;
+    color: #ff6b6b;
+}
+
+/* ===== MAIN CONTENT ===== */
+#content {
+    display: none;
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 15px;
+    color: #ffb6e6;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: rgba(0,0,0,0.55);
+    border-radius: 22px;
+    padding: 18px;
+    box-shadow: 0 0 35px rgba(255,105,180,0.25);
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card img {
+    width: 100%;
+    border-radius: 18px;
+    margin-bottom: 15px;
+}
+
+.desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #ffd6ef;
+    animation: textFade 1.2s ease;
+}
+
+@keyframes textFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ===== BUTTONS ===== */
+.controls {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.controls button {
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(45deg, #ff6ec7, #ff9ad5);
+    font-weight: bold;
+    cursor: pointer;
+}
+</style>
 </head>
+
 <body>
 
-<h2>🔐 Password Test</h2>
+<!-- PASSWORD SCREEN -->
+<div id="lockScreen">
+    <h1>🔐 Private Memory</h1>
+    <input type="password" id="password" placeholder="Enter Password">
+    <br>
+    <button onclick="unlock()">Unlock</button>
+    <div id="error"></div>
+</div>
 
-<input type="password" id="pass" placeholder="Enter password">
-<button onclick="unlock()">Enter</button>
+<!-- MAIN CONTENT -->
+<div id="content">
+    <h2>A Memorable Day With Ammulu ❤️</h2>
 
-<p id="msg" style="color:red;"></p>
+    <div class="card">
+        <img id="image" src="img1.jpg">
+        <div class="desc" id="desc"></div>
+    </div>
 
-<div id="content" style="display:none;">
-  <h3>✅ All 8 Images Loaded</h3>
-
-  <img src="images/img1.jpg" width="200"><br><br>
-  <img src="images/img2.jpg" width="200"><br><br>
-  <img src="images/img3.jpg" width="200"><br><br>
-  <img src="images/img4.jpg" width="200"><br><br>
-  <img src="images/img5.jpg" width="200"><br><br>
-  <img src="images/img6.jpg" width="200"><br><br>
-  <img src="images/img7.jpg" width="200"><br><br>
-  <img src="images/img8.jpg" width="200"><br><br>
+    <div class="controls">
+        <button onclick="prev()">⬅ Previous</button>
+        <button onclick="next()">Next ➡</button>
+    </div>
 </div>
 
 <script>
+/* ===== PASSWORD ===== */
 function unlock() {
-  const password = document.getElementById("pass").value;
+    const pass = document.getElementById("password").value;
+    if (pass === "11-01-2026") {
+        document.getElementById("lockScreen").style.display = "none";
+        document.getElementById("content").style.display = "block";
+        show();
+    } else {
+        document.getElementById("error").innerText = "Wrong password ❤️";
+    }
+}
 
-  if (password === "11-01-2026") {
-    document.getElementById("content").style.display = "block";
-    document.getElementById("msg").innerText = "";
-  } else {
-    document.getElementById("msg").innerText = "Wrong password ❌";
-  }
+/* ===== IMAGES ===== */
+const images = [
+    "img1.jpg",
+    "img2.jpg",
+    "img3.jpg",
+    "img4.jpg",
+    "img5.jpg",
+    "img6.jpg",
+    "img7.jpg",
+    "img8.jpg"
+];
+
+/* ===== DESCRIPTIONS (EDIT THESE ❤️) ===== */
+const descriptions = [
+    "✨ Write your first romantic memory here...",
+    "💖 Write your second description here...",
+    "🌸 Write your third beautiful moment...",
+    "🌙 Write your fourth emotional line...",
+    "💫 Write your fifth memory...",
+    "❤️ Write your sixth special feeling...",
+    "🌹 Write your seventh message...",
+    "🥰 Write your final lovely note..."
+];
+
+let index = 0;
+
+function show() {
+    document.getElementById("image").src = images[index];
+    document.getElementById("desc").innerText = descriptions[index];
+}
+
+function next() {
+    if (index < images.length - 1) {
+        index++;
+        show();
+    }
+}
+
+function prev() {
+    if (index > 0) {
+        index--;
+        show();
+    }
 }
 </script>
 
