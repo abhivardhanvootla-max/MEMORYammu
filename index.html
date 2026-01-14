@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A Memorable Day With Ammulu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --glass: rgba(255,255,255,0.14);
+  --border: rgba(255,255,255,0.25);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  background: linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1a2a3a);
+  background-size: 400% 400%;
+  animation: bgMove 18s ease infinite;
+}
+
+@keyframes bgMove {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
+/* ---------- PASSWORD SCREEN ---------- */
+#lockScreen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(14px);
+  background: rgba(0,0,0,0.55);
+  z-index: 10;
+}
+
+.lock-box {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  padding: 30px;
+  width: 90%;
+  max-width: 360px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.lock-box h2 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 10px;
+}
+
+.lock-box p {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.lock-box input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.lock-box button {
+  margin-top: 15px;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  background: #ffb6c1;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ---------- MAIN CONTENT ---------- */
+.container {
+  padding: 25px 15px 50px;
+  max-width: 420px;
+  margin: auto;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 30px;
+}
+
+/* ---------- CARD ---------- */
+.card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.35);
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.card.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.card img {
+  width: 100%;
+  display: block;
+}
+
+.card .text {
+  padding: 18px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ---------- FLOATING LIGHTS ---------- */
+.light {
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  background: rgba(255,182,193,0.15);
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: float 10s infinite alternate;
+}
+
+.light.one { top: 10%; left: 5%; }
+.light.two { bottom: 15%; right: 10%; animation-duration: 14s; }
+
+@keyframes float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-60px); }
+}
+</style>
+</head>
+
+<body>
+
+<div id="lockScreen">
+  <div class="lock-box">
+    <h2>Just For You 💖</h2>
+    <p>Enter the secret to unlock this memory</p>
+    <input type="password" id="pass" placeholder="Password" />
+    <button onclick="unlock()">Unlock</button>
+  </div>
+</div>
+
+<div class="light one"></div>
+<div class="light two"></div>
+
+<div class="container">
+  <h1>A Memorable Day With Ammulu</h1>
+  <div class="subtitle">Some moments deserve to live forever ✨</div>
+
+  <!-- CARD 1 -->
+  <div class="card">
+    <img src="images/1.jpg">
+    <div class="text">WRITE YOUR DESCRIPTION HERE</div>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="card">
+    <img src="images/2.jpg">
+    <div class="text">WRITE YOUR DESCRIPTION HERE</div>
+  </div>
+
+  <!-- CARD 3 -->
+  <div class="card">
+    <img src="images/3.jpg">
+    <div class="text">WRITE YOUR DESCRIPTION HERE</div>
+  </div>
+
+  <!-- CARD 4 -->
+  <div class="card">
+    <img src="images/4.jpg">
+    <div class="text">WRITE YOUR DESCRIPTION HERE</div>
+  </div>
+
+  <!-- CARD 5 -->
+  <div class="card">
+    <img src="images/5.jpg">
+    <div class="text">WRITE YOUR DESCRIPTION HERE</div>
+  </div>
+
+  <!-- CARD 6 -->
+  <div class="card">
+    <img src="images/6.jpg">
+    <div class="text">WRITE YOUR DESCRIPTION HERE</div>
+  </div>
+
+  <!-- CARD 7 -->
+  <div class="card">
+    <img src="images/7.jpg">
+    <div class="text">WRITE YOUR DESCRIPTION HERE</div>
+  </div>
+
+  <!-- CARD 8 -->
+  <div class="card">
+    <img src="images/8.jpg">
+    <div class="text">WRITE YOUR DESCRIPTION HERE</div>
+  </div>
+
+</div>
+
+<script>
+const PASSWORD = "11-01-2026";
+
+function unlock() {
+  const input = document.getElementById("pass").value;
+  if (input === PASSWORD) {
+    document.getElementById("lockScreen").style.display = "none";
+  } else {
+    alert("Wrong password 💔");
+  }
+}
+
+// scroll animation
+const cards = document.querySelectorAll('.card');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.2 });
+
+cards.forEach(card => observer.observe(card));
+</script>
+
+</body>
+</html>
