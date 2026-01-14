@@ -3,266 +3,249 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Memorable Day</title>
+<title>Private Memories</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-        font-family: 'Segoe UI', sans-serif;
-    }
+*{
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
 
-    body {
-        margin: 0;
-        min-height: 100vh;
-        background: radial-gradient(circle at top, #050814, #000000);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        overflow: hidden;
-    }
+body{
+    margin:0;
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+}
 
-    /* ===== Shared Card ===== */
-    .card {
-        background: rgba(255, 255, 255, 0.06);
-        backdrop-filter: blur(18px);
-        border-radius: 22px;
-        padding: 20px;
-        box-shadow: 0 25px 60px rgba(0,0,0,0.7);
-        animation: fadeIn 0.7s ease;
-    }
+/* ===== COMMON CARD ===== */
+.card{
+    background:rgba(0,0,0,0.55);
+    border-radius:20px;
+    padding:22px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.6);
+    animation:fadeIn 0.6s ease;
+    text-align:center;
+}
 
-    /* ===== Password Screen ===== */
-    .password-box {
-        width: 90%;
-        max-width: 380px;
-        text-align: center;
-    }
+/* ===== PASSWORD ===== */
+.password-box{
+    width:90%;
+    max-width:380px;
+}
 
-    .password-box h2 {
-        margin-bottom: 20px;
-        font-weight: 600;
-        letter-spacing: 1px;
-    }
+.password-box input{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:none;
+    margin:15px 0;
+    font-size:16px;
+}
 
-    .password-box input {
-        width: 100%;
-        padding: 12px;
-        border-radius: 10px;
-        border: none;
-        outline: none;
-        margin-bottom: 15px;
-        font-size: 16px;
-    }
+.password-box button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    font-weight:bold;
+    cursor:pointer;
+}
 
-    .password-box button {
-        width: 100%;
-        padding: 12px;
-        border: none;
-        border-radius: 25px;
-        background: linear-gradient(135deg, #ff6a88, #ff99ac);
-        color: #000;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-    }
+.error{
+    color:#ff9a9a;
+    display:none;
+}
 
-    .error {
-        color: #ff9a9a;
-        margin-top: 10px;
-        display: none;
-    }
+/* ===== ENTRY SCREEN ===== */
+.entry{
+    display:none;
+    max-width:420px;
+}
 
-    /* ===== Intro Screen ===== */
-    .intro {
-        display: none;
-        width: 90%;
-        max-width: 420px;
-        text-align: center;
-    }
+.entry h1{
+    font-size:26px;
+    line-height:1.4;
+}
 
-    .intro h1 {
-        font-size: 26px;
-        margin-bottom: 15px;
-        letter-spacing: 2px;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+/* ===== GALLERY ===== */
+.gallery{
+    display:none;
+    width:100%;
+    max-width:420px;
+}
 
-    .intro p {
-        font-size: 15px;
-        opacity: 0.85;
-        margin-bottom: 25px;
-    }
+.gallery img{
+    width:100%;
+    border-radius:15px;
+}
 
-    .intro button {
-        padding: 12px 28px;
-        border-radius: 30px;
-        border: none;
-        cursor: pointer;
-        font-weight: bold;
-        background: linear-gradient(135deg, #89f7fe, #66a6ff);
-        color: #000;
-    }
+/* ===== TEXT SCREENS ===== */
+.text-section{
+    display:none;
+    max-width:420px;
+}
 
-    /* ===== Gallery ===== */
-    .gallery {
-        display: none;
-        width: 100%;
-        max-width: 420px;
-        padding: 20px;
-    }
+.text-card{
+    line-height:1.7;
+    font-size:15px;
+    white-space:pre-wrap;
+}
 
-    .card img {
-        width: 100%;
-        border-radius: 18px;
-        display: block;
-        margin-bottom: 15px;
-    }
+/* ===== CONTROLS ===== */
+.controls{
+    display:flex;
+    justify-content:space-between;
+    margin-top:18px;
+}
 
-    .description {
-        font-size: 14px;
-        text-align: center;
-        opacity: 0.9;
-        line-height: 1.6;
-    }
+.controls button{
+    padding:10px 22px;
+    border-radius:30px;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+    background:linear-gradient(135deg,#89f7fe,#66a6ff);
+    color:#000;
+}
 
-    .controls {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
-    }
-
-    .controls button {
-        padding: 10px 22px;
-        border-radius: 30px;
-        border: none;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: 600;
-        background: linear-gradient(135deg, #ffecd2, #fcb69f);
-        color: #000;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(15px) scale(0.96);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
+@keyframes fadeIn{
+    from{opacity:0;transform:scale(0.95);}
+    to{opacity:1;transform:scale(1);}
+}
 </style>
 </head>
 
 <body>
 
-<!-- ===== Password Screen ===== -->
-<div class="password-box card" id="passwordBox">
+<!-- PASSWORD -->
+<div class="card password-box" id="passwordBox">
     <h2>🔐 Enter Password</h2>
     <input type="password" id="passwordInput" placeholder="Password">
     <button onclick="checkPassword()">Unlock</button>
     <div class="error" id="errorText">Wrong password</div>
 </div>
 
-<!-- ===== Intro Screen ===== -->
-<div class="intro card" id="intro">
-    <h1>A MEMORABLE DAY<br>WITH AMMULU</h1>
-    <p>A small collection of moments, memories, and emotions 🤍</p>
-    <button onclick="startGallery()">Enter Memories</button>
+<!-- ENTRY -->
+<div class="card entry" id="entryScreen">
+    <h1>MEMORABLE DAY WITH AMMULU 😚</h1>
+    <br>
+    <button onclick="startGallery()">Enter</button>
 </div>
 
-<!-- ===== Gallery ===== -->
+<!-- GALLERY -->
 <div class="gallery" id="gallery">
     <div class="card">
-        <img id="image" src="images/img1.jpg" alt="Memory">
-        <div class="description" id="description"></div>
+        <img id="image" src="images/img1.jpg">
     </div>
-
     <div class="controls">
         <button onclick="prevImage()">⬅ Previous</button>
         <button onclick="nextImage()">Next ➡</button>
     </div>
 </div>
 
+<!-- TEXT SECTION -->
+<div class="text-section" id="textSection">
+    <div class="card text-card" id="textCard"></div>
+    <div class="controls">
+        <button onclick="prevText()">⬅ Previous</button>
+        <button onclick="nextText()">Next ➡</button>
+    </div>
+</div>
+
 <script>
-    const correctPassword = "11-01-2026";
-    const totalImages = 8;
-    let currentIndex = 1;
+const correctPassword="11-01-2026";
 
-    /* ✏️ EDIT YOUR DESCRIPTIONS HERE */
-    const descriptions = [
-        "Hi ammulu today is 11th Jan 2025
-Today I m very Happy With You And A little bit having pain too. Which was I have to ass far as long time .
+/* ===== IMAGES ===== */
+const totalImages=8;
+let currentImage=1;
+
+/* ===== TEXT SCREENS ===== */
+const texts=[
+`[1/14, 11:18 AM] Abhi personal 😉:
+Hi ammulu today is 11th Jan 2025.
+Today I m very Happy With You And A little bit having pain too.
+
 Kani e roju ni matram a roju kuuda marichi ponu ammulu.
-Even vache varaku kuuda nenu ntha excitement tho unna ani naaku telsu neeku ntha undho leedho naaku NUV vache varaku kuuda telidhu.Vachi kurchunnaka kuuda normal gha unnav.
-I m not really happy with that kani , adho chinna hope nuv happy gah unnav ani ledha m ayna feeling expres cheyyadaniki vachav ani. 🤍",
-        "Nenu aythe ntho try cheina ni hand hold cheyyadaniki 🥺 because i really misss you untill that I missed you how much can I even express .
+Even vache varaku kuuda nenu ntha excitement tho unna ani naaku telsu...`,
 
-Na eyes lo ntha water antte ni side chusthe akkada kindhiki vachesthayo ani bayam.,Manaku thoodu vaadu okkadu mana gandaniki anipinchindhi. 💫",
-        "But ni hand touch chesaka na lo Anni thoughts unnayo telsa 🥺 ninnu ntha miss ayyano Anni sarlu ninnu gurthu thechukunnano telsa even you can't imagine ammulu 🥲
+`Nenu aythe ntho try cheina ni hand hold cheyyadaniki 🥺
+because i really misss you.
 
-Ega last ki vaadu velli poynaka naaku ntha happy antte antha happy anipinchindhi anduke ega ni hand hold chesi pattukunna antha seepu aythe ninnu pattukoni unnano antha seepu na mind lo chaala thoughts run aynayi.🥹 ✨",
-        "But it's a beautiful beautiful beautiful memory,Nuv ntha gattiga hold chesthunnavo feel aynaka 
-Naaku ardham ayindhi "edhi intha nannu miss avthundha ani "💕",
-        "I m really get into emotional but at a time sharma unnadu anduke express cheyya ledhu.
+Na eyes lo ntha water antte ni side chusthe akkada kindhiki vachesthayo ani bayam.
 
-Nuv pic dhigudham ani hand pattukunnapudu na happiness nuv even imagine cheyyalev telsa 🥺 
+But ni hand touch chesaka na lo Anni thoughts unnayo telsa 🥺`,
 
-Ala nanu nuvvu hold cheska all my thoughts are thrown into dustbin. 🌙",
-        "Every second here felt magical 💖",
-        "A silent I m really get into emotional but at a time sharma unnadu anduke express cheyya ledhu.
+`And edhi main nuv na shoulder pi padukunnav 🥺
+I really missed you a lot ammulu.
 
-Nuv pic dhigudham ani hand pattukunnapudu na happiness nuv even imagine cheyyalev telsa 🥺 
+Nuv dhagara unnapudu teliya ledhu kani
+Nuv dhooram vellaka nenu ntha bayapadda ntha bhadha padda.
 
-Ala nanu nuvvu hold cheska all my thoughts are thrown into dustbin. hidden in this memory 🌸",
-        "Forever thankful for this day with you ❤️"
-    ];
+But finally nuv eroju vachav 💙`
+];
 
-    function checkPassword() {
-        const input = document.getElementById("passwordInput").value;
-        const error = document.getElementById("errorText");
+let textIndex=0;
 
-        if (input === correctPassword) {
-            document.getElementById("passwordBox").style.display = "none";
-            document.getElementById("intro").style.display = "block";
-        } else {
-            error.style.display = "block";
-        }
+/* ===== FUNCTIONS ===== */
+function checkPassword(){
+    const input=passwordInput.value;
+    if(input===correctPassword){
+        passwordBox.style.display="none";
+        entryScreen.style.display="block";
+    }else{
+        errorText.style.display="block";
     }
+}
 
-    function startGallery() {
-        document.getElementById("intro").style.display = "none";
-        document.getElementById("gallery").style.display = "block";
-        updateContent();
+function startGallery(){
+    entryScreen.style.display="none";
+    gallery.style.display="block";
+}
+
+function updateImage(){
+    image.src=`images/img${currentImage}.jpg`;
+}
+
+function nextImage(){
+    if(currentImage<totalImages){
+        currentImage++;
+        updateImage();
+    }else{
+        gallery.style.display="none";
+        textSection.style.display="block";
+        updateText();
     }
+}
 
-    function updateContent() {
-        const img = document.getElementById("image");
-
-        // ✅ cache-busting fix (VERY IMPORTANT)
-        img.src = `images/img${currentIndex}.jpg?v=${Date.now()}`;
-
-        document.getElementById("description").innerText =
-            descriptions[currentIndex - 1];
+function prevImage(){
+    if(currentImage>1){
+        currentImage--;
+        updateImage();
     }
+}
 
-    function nextImage() {
-        if (currentIndex < totalImages) {
-            currentIndex++;
-            updateContent();
-        }
-    }
+function updateText(){
+    textCard.innerText=texts[textIndex];
+}
 
-    function prevImage() {
-        if (currentIndex > 1) {
-            currentIndex--;
-            updateContent();
-        }
+function nextText(){
+    if(textIndex<texts.length-1){
+        textIndex++;
+        updateText();
     }
+}
+
+function prevText(){
+    if(textIndex>0){
+        textIndex--;
+        updateText();
+    }
+}
 </script>
 
 </body>
