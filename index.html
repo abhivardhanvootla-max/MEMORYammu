@@ -224,8 +224,13 @@
     }
 
     function updateContent() {
-        document.getElementById("image").src = `images/img${currentIndex}.jpg`;
-        document.getElementById("description").innerText = descriptions[currentIndex - 1];
+        const img = document.getElementById("image");
+
+        // ✅ cache-busting fix (VERY IMPORTANT)
+        img.src = `images/img${currentIndex}.jpg?v=${Date.now()}`;
+
+        document.getElementById("description").innerText =
+            descriptions[currentIndex - 1];
     }
 
     function nextImage() {
